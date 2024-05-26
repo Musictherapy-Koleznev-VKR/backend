@@ -5,6 +5,8 @@ const Video = require('./src/models/Video');
 const Audio = require('./src/models/Audio');
 const LiveSound = require('./src/models/LiveSound');
 
+// docker-compose up -d --no-deps --build
+
 module.exports.startServerCheckAdmin = async () => {
   const count = await User.find({email: 'admin@admin.com'}).count();
   if (count >= 1) return;
