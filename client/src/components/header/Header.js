@@ -1,53 +1,49 @@
-import React, { useContext, useEffect, useState } from "react";
-import s from "./Header.module.scss";
-import GlobalStyle from "../GlobalStyle.module.scss";
-import { usePopupForm } from "../../hooks/usePopupForm";
-import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../context/authContext";
-import { FormReEmail } from "./FormReEmail";
-import { FormRePassword } from "./FormRePassword";
-import {
-  optionTranslation,
-  optionTranslationAdmin,
-  optionVersion,
-} from "../../constants/OptionsTable";
-import { useHttp } from "../../hooks/http.hook";
-import { FormReTranslation } from "./FormReTranslation";
-import { checkLanguageConst } from "../../hooks/translashion";
-import { FormVersion } from "./FormVersion";
-import { LogoApp } from "../../Settings/Components/LogoApp/LogoApp";
-import { GlobalSvgSelector } from "../../assets/icons/global/GlobalSvgSelector";
-import { FormSelect } from "./FormSelect";
+import React, {useContext, useEffect, useState} from 'react';
+import s from './Header.module.scss';
+import GlobalStyle from '../GlobalStyle.module.scss';
+import {usePopupForm} from '../../hooks/usePopupForm';
+import {NavLink} from 'react-router-dom';
+import {AuthContext} from '../../context/authContext';
+import {FormReEmail} from './FormReEmail';
+import {FormRePassword} from './FormRePassword';
+import {optionTranslation, optionTranslationAdmin, optionVersion} from '../../constants/OptionsTable';
+import {useHttp} from '../../hooks/http.hook';
+import {FormReTranslation} from './FormReTranslation';
+import {checkLanguageConst} from '../../hooks/translashion';
+import {FormVersion} from './FormVersion';
+import {LogoApp} from '../../Settings/Components/LogoApp/LogoApp';
+import {GlobalSvgSelector} from '../../assets/icons/global/GlobalSvgSelector';
+import {FormSelect} from './FormSelect';
 
 const label_menu = [
   {
-    label: "Users",
-    url: "/admin_panel/users",
+    label: 'Users',
+    url: '/koleznev/admin_panel/users',
   },
   {
-    label: "Video",
-    url: "/admin_panel/video",
+    label: 'Video',
+    url: '/koleznev/admin_panel/video',
   },
   {
-    label: "Audio",
-    url: "/admin_panel/audio",
+    label: 'Audio',
+    url: '/koleznev/admin_panel/audio',
   },
   {
-    label: "Playlists",
-    url: "/admin_panel/playlists",
+    label: 'Playlists',
+    url: '/koleznev/admin_panel/playlists',
   },
   {
-    label: "Events",
-    url: "/admin_panel/posters",
+    label: 'Events',
+    url: '/koleznev/admin_panel/posters',
   },
 
   {
-    label: "Tests",
-    url: "/admin_panel/tests",
+    label: 'Tests',
+    url: '/koleznev/admin_panel/tests',
   },
   {
-    label: "Course",
-    url: "/admin_panel/courses",
+    label: 'Course',
+    url: '/koleznev/admin_panel/courses',
   },
 
   // Not used
@@ -63,22 +59,22 @@ const label_menu = [
 
 const label_menu_fin = [
   {
-    label: "Users",
-    url: "/admin_panel/users_fin",
+    label: 'Users',
+    url: '/koleznev/admin_panel/users_fin',
   },
 ];
 
 export const Header = () => {
   const popupForm = usePopupForm();
   const auth = useContext(AuthContext);
-  const { request, error, clearError, loading } = useHttp();
+  const {request, error, clearError, loading} = useHttp();
   const [status, setStatus] = useState(false);
   const [version, setVersion] = useState(null);
   const [active_list_menu, set_active_list_menu] = useState(label_menu_fin);
 
   const getVersion = async () => {
     try {
-      const answer = await request(`/api/data/version`, "GET", null, {
+      const answer = await request(`/api/data/version`, 'GET', null, {
         Authorization: auth.token,
       });
       setVersion(answer.version);
@@ -86,7 +82,7 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    if (auth.type_admin === "Администратор") {
+    if (auth.type_admin === 'Администратор') {
       set_active_list_menu(label_menu);
     }
   }, [auth.type_admin]);
@@ -116,45 +112,28 @@ export const Header = () => {
 
   const translationHandler = () => {
     profileHandler();
-    popupForm.openHandler(
-      <FormReTranslation
-        fileName={"sample_translation.json"}
-        option={optionTranslation}
-        status={true}
-      />
-    );
+    popupForm.openHandler(<FormReTranslation fileName={'sample_translation.json'} option={optionTranslation} status={true} />);
   };
 
   const translationAdminHandler = () => {
     profileHandler();
     popupForm.openHandler(
-      <FormReTranslation
-        fileName={"sample_translation_admin.json"}
-        option={optionTranslationAdmin}
-        status={true}
-      />
+      <FormReTranslation fileName={'sample_translation_admin.json'} option={optionTranslationAdmin} status={true} />
     );
   };
 
   const versionHandler = () => {
     profileHandler();
-    popupForm.openHandler(
-      <FormVersion
-        data={version}
-        option={optionVersion}
-        reload={getVersion}
-        status={false}
-      />
-    );
+    popupForm.openHandler(<FormVersion data={version} option={optionVersion} reload={getVersion} status={false} />);
   };
 
   const selectLenHandler = () => {
     popupForm.openHandler(
       <FormSelect
-        title={"SelectLanguage"}
+        title={'SelectLanguage'}
         data={auth.languages_list}
-        value_code={"code"}
-        label_code={"name"}
+        value_code={'code'}
+        label_code={'name'}
         select_handler={auth.newLanguage}
         selectedValue={auth.language}
       />
@@ -181,15 +160,8 @@ export const Header = () => {
 
           <div className={s.menu}>
             {active_list_menu.map((item, index) => (
-              <NavLink
-                to={item.url}
-                key={item.label}
-                className={s.button_item}
-                activeClassName={s.button_item_active}
-              >
-                <div
-                  className={GlobalStyle.CustomFontRegular + " " + s.item_label}
-                >
+              <NavLink to={item.url} key={item.label} className={s.button_item} activeClassName={s.button_item_active}>
+                <div className={GlobalStyle.CustomFontRegular + ' ' + s.item_label}>
                   {checkLanguageConst(item.label, auth.translations)}
                 </div>
               </NavLink>
@@ -199,158 +171,71 @@ export const Header = () => {
         <div className={s.lines}>
           <div className={s.lang}>
             <div onClick={() => selectLenHandler()} className={s.lenBut}>
-              {checkLanguageConst("Language", auth.translations)}
-              {": "}
+              {checkLanguageConst('Language', auth.translations)}
+              {': '}
               {auth.languages_list?.find((item) => item.code === auth.language)
-                ? checkLanguageConst(
-                    auth.languages_list?.find(
-                      (item) => item.code === auth.language
-                    ).name,
-                    auth.translations
-                  )
-                : ""}
+                ? checkLanguageConst(auth.languages_list?.find((item) => item.code === auth.language).name, auth.translations)
+                : ''}
               <div
                 style={{
                   marginLeft: 8,
                 }}
               >
-                <GlobalSvgSelector id="edit_mini" />
+                <GlobalSvgSelector id='edit_mini' />
               </div>
             </div>
           </div>
           <div className={status ? s.block_profile_active : s.block_profile}>
-            <div
-              className={s.block_profile_header}
-              onClick={() => profileHandler()}
-            >
-              {status ? (
-                <div className={GlobalStyle.CustomFontMedium + " " + s.email}>
-                  {auth.email}
-                </div>
-              ) : null}
+            <div className={s.block_profile_header} onClick={() => profileHandler()}>
+              {status ? <div className={GlobalStyle.CustomFontMedium + ' ' + s.email}>{auth.email}</div> : null}
               <div className={s.profile}>
-                <div
-                  className={
-                    GlobalStyle.CustomFontRegular + " " + s.label_profile
-                  }
-                >
-                  A
-                </div>
+                <div className={GlobalStyle.CustomFontRegular + ' ' + s.label_profile}>A</div>
               </div>
             </div>
             {status ? (
               <div className={s.list_button}>
-                {auth.type_admin === "Администратор" ? (
+                {auth.type_admin === 'Администратор' ? (
                   <>
-                    <div
-                      className={s.button_profile_item}
-                      onClick={() => versionHandler()}
-                    >
-                      <div
-                        className={
-                          GlobalStyle.CustomFontMedium +
-                          " " +
-                          s.button_profile_item_text
-                        }
-                      >
-                        {checkLanguageConst(
-                          "ApplicationVersion",
-                          auth.translations
-                        )}
+                    <div className={s.button_profile_item} onClick={() => versionHandler()}>
+                      <div className={GlobalStyle.CustomFontMedium + ' ' + s.button_profile_item_text}>
+                        {checkLanguageConst('ApplicationVersion', auth.translations)}
                       </div>
                     </div>
                     <NavLink
-                      to={"/admin_panel/lengs/"}
+                      to={'/koleznev/admin_panel/lengs/'}
                       className={s.button_profile_item}
                       activeClassName={s.button_profile_item}
                       onClick={() => profileHandler()}
                     >
-                      <div
-                        className={
-                          GlobalStyle.CustomFontMedium +
-                          " " +
-                          s.button_profile_item_text
-                        }
-                      >
-                        {checkLanguageConst("Languages", auth.translations)}
+                      <div className={GlobalStyle.CustomFontMedium + ' ' + s.button_profile_item_text}>
+                        {checkLanguageConst('Languages', auth.translations)}
                       </div>
                     </NavLink>
-                    <div
-                      className={s.button_profile_item}
-                      onClick={() => translationHandler()}
-                    >
-                      <div
-                        className={
-                          GlobalStyle.CustomFontMedium +
-                          " " +
-                          s.button_profile_item_text
-                        }
-                      >
-                        {checkLanguageConst(
-                          "ApplicationTranslations",
-                          auth.translations
-                        )}
+                    <div className={s.button_profile_item} onClick={() => translationHandler()}>
+                      <div className={GlobalStyle.CustomFontMedium + ' ' + s.button_profile_item_text}>
+                        {checkLanguageConst('ApplicationTranslations', auth.translations)}
                       </div>
                     </div>
-                    <div
-                      className={s.button_profile_item}
-                      onClick={() => translationAdminHandler()}
-                    >
-                      <div
-                        className={
-                          GlobalStyle.CustomFontMedium +
-                          " " +
-                          s.button_profile_item_text
-                        }
-                      >
-                        {checkLanguageConst(
-                          "AdminTranslations",
-                          auth.translations
-                        )}
+                    <div className={s.button_profile_item} onClick={() => translationAdminHandler()}>
+                      <div className={GlobalStyle.CustomFontMedium + ' ' + s.button_profile_item_text}>
+                        {checkLanguageConst('AdminTranslations', auth.translations)}
                       </div>
                     </div>
                   </>
                 ) : null}
-                <div
-                  className={s.button_profile_item}
-                  onClick={() => rePasswordHandler()}
-                >
-                  <div
-                    className={
-                      GlobalStyle.CustomFontMedium +
-                      " " +
-                      s.button_profile_item_text
-                    }
-                  >
-                    {checkLanguageConst("ChangePassword", auth.translations)}
+                <div className={s.button_profile_item} onClick={() => rePasswordHandler()}>
+                  <div className={GlobalStyle.CustomFontMedium + ' ' + s.button_profile_item_text}>
+                    {checkLanguageConst('ChangePassword', auth.translations)}
                   </div>
                 </div>
-                <div
-                  className={s.button_profile_item}
-                  onClick={() => reEmailHandler()}
-                >
-                  <div
-                    className={
-                      GlobalStyle.CustomFontMedium +
-                      " " +
-                      s.button_profile_item_text
-                    }
-                  >
-                    {checkLanguageConst("ChangedE-mail", auth.translations)}
+                <div className={s.button_profile_item} onClick={() => reEmailHandler()}>
+                  <div className={GlobalStyle.CustomFontMedium + ' ' + s.button_profile_item_text}>
+                    {checkLanguageConst('ChangedE-mail', auth.translations)}
                   </div>
                 </div>
-                <div
-                  className={s.button_profile_item}
-                  onClick={() => logoutHandler()}
-                >
-                  <div
-                    className={
-                      GlobalStyle.CustomFontMedium +
-                      " " +
-                      s.button_profile_item_text
-                    }
-                  >
-                    {checkLanguageConst("Logout", auth.translations)}
+                <div className={s.button_profile_item} onClick={() => logoutHandler()}>
+                  <div className={GlobalStyle.CustomFontMedium + ' ' + s.button_profile_item_text}>
+                    {checkLanguageConst('Logout', auth.translations)}
                   </div>
                 </div>
               </div>
