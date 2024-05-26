@@ -36,6 +36,7 @@
         "sass": "^1.43.3"
     },
     "proxy": "http://178.172.165.101/koleznev",
+    "homepage": "/koleznev/",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",

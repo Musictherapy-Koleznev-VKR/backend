@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.2b03bde8.chunk.css",
-    "main.js": "/static/js/main.3939de53.chunk.js",
-    "main.js.map": "/static/js/main.3939de53.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.71c5bbf3.js",
-    "runtime-main.js.map": "/static/js/runtime-main.71c5bbf3.js.map",
-    "static/css/2.f62aa245.chunk.css": "/static/css/2.f62aa245.chunk.css",
-    "static/js/2.c5ffc912.chunk.js": "/static/js/2.c5ffc912.chunk.js",
-    "static/js/2.c5ffc912.chunk.js.map": "/static/js/2.c5ffc912.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.f62aa245.chunk.css.map": "/static/css/2.f62aa245.chunk.css.map",
-    "static/css/main.2b03bde8.chunk.css.map": "/static/css/main.2b03bde8.chunk.css.map",
-    "static/js/2.c5ffc912.chunk.js.LICENSE.txt": "/static/js/2.c5ffc912.chunk.js.LICENSE.txt",
-    "static/media/background-logo.4f74ab78.png": "/static/media/background-logo.4f74ab78.png",
-    "static/media/index.scss": "/static/media/background.6d32974a.jpg",
-    "static/media/logo.11397f42.png": "/static/media/logo.11397f42.png"
+    "main.css": "/koleznev/static/css/main.82010e4e.chunk.css",
+    "main.js": "/koleznev/static/js/main.3939de53.chunk.js",
+    "main.js.map": "/koleznev/static/js/main.3939de53.chunk.js.map",
+    "runtime-main.js": "/koleznev/static/js/runtime-main.0524481e.js",
+    "runtime-main.js.map": "/koleznev/static/js/runtime-main.0524481e.js.map",
+    "static/css/2.f62aa245.chunk.css": "/koleznev/static/css/2.f62aa245.chunk.css",
+    "static/js/2.c5ffc912.chunk.js": "/koleznev/static/js/2.c5ffc912.chunk.js",
+    "static/js/2.c5ffc912.chunk.js.map": "/koleznev/static/js/2.c5ffc912.chunk.js.map",
+    "index.html": "/koleznev/index.html",
+    "static/css/2.f62aa245.chunk.css.map": "/koleznev/static/css/2.f62aa245.chunk.css.map",
+    "static/css/main.82010e4e.chunk.css.map": "/koleznev/static/css/main.82010e4e.chunk.css.map",
+    "static/js/2.c5ffc912.chunk.js.LICENSE.txt": "/koleznev/static/js/2.c5ffc912.chunk.js.LICENSE.txt",
+    "static/media/background-logo.4f74ab78.png": "/koleznev/static/media/background-logo.4f74ab78.png",
+    "static/media/index.scss": "/koleznev/static/media/background.6d32974a.jpg",
+    "static/media/logo.11397f42.png": "/koleznev/static/media/logo.11397f42.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.71c5bbf3.js",
+    "static/js/runtime-main.0524481e.js",
     "static/css/2.f62aa245.chunk.css",
     "static/js/2.c5ffc912.chunk.js",
-    "static/css/main.2b03bde8.chunk.css",
+    "static/css/main.82010e4e.chunk.css",
     "static/js/main.3939de53.chunk.js"
   ]
 }
