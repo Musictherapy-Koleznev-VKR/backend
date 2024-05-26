@@ -23,14 +23,14 @@ app.use(passport.initialize());
 require('./src/middleware/passport')(passport);
 
 app.use(require('morgan')('dev'));
-app.use('/uploads', express.static('uploads'));
-app.use('/translations', express.static('translations'));
+app.use('/koleznev/uploads', express.static('uploads'));
+app.use('/koleznev/translations', express.static('translations'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(require('cors')());
 
 app.use(function (req, res, next) {
-  if (req.originalUrl.includes('/api/data/')) {
+  if (req.originalUrl.includes('/koleznev/api/data/')) {
     const date = new Date();
     const data =
       date.toUTCString() +
@@ -50,22 +50,22 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/api/auth', authRoute);
-app.use('/api/profile', profileRoute);
-app.use('/api/data', dataRoute);
+app.use('/koleznev/api/auth', authRoute);
+app.use('/koleznev/api/profile', profileRoute);
+app.use('/koleznev/api/data', dataRoute);
 
-app.use('/api/admin_panel', adminRoute);
-app.use('/api/upload', uploadRoute);
-app.use('/api/log', logRoute);
-app.use('/api/individual_playlist', individualPlaylistRoute);
+app.use('/koleznev/api/admin_panel', adminRoute);
+app.use('/koleznev/api/upload', uploadRoute);
+app.use('/koleznev/api/log', logRoute);
+app.use('/koleznev/api/individual_playlist', individualPlaylistRoute);
 
-app.use('/', express.static(path.join(__dirname, 'client', 'build')));
+app.use('/koleznev/', express.static(path.join(__dirname, 'client', 'build')));
 
-app.get('*', (req, res) => {
+app.get('/koleznev/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
-app.get('*', (req, res) => {
+app.get('/koleznev/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build'));
 });
 
