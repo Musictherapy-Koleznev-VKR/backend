@@ -1,8 +1,8 @@
 // localhost
-export const httpServer = 'http://localhost:5000';
+// export const httpServer = 'http://localhost:5000';
 
 // prodaction
-// export const httpServer = "https://admin.koleznev.by";
+export const httpServer = 'https://178.172.165.101/koleznev';
 
 // herocku
 // export const httpServer = "https://musictherapy96.herokuapp.com";
